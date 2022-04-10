@@ -83,26 +83,24 @@ class Utility {
     /*
     * selector: (item, index) => {return value;}
     * */
-    select(source: {} | [], selector: (item: any, index: number) => boolean): [] {
+    select(source: {} | [], selector: (item: any, index: number) => boolean): any[] {
+        var result: any[] = [];
         if (!this.isArray(source)) {
-            var result = [];
             var i = -1;
             this.foreach(source, (value: any, key: string, i: number) => {
                 i++;
                 result.push(selector ? selector(value, key, i) : value);
                 return true;
             });
-            return result;
         }
         else {
-            var result = [];
             var i = -1;
-            this.foreach(source, (a) => {
+            this.foreach(source, (value: any) => {
                 i++;
-                result.push(selector(a, i));
+                result.push(selector(value, i));
             });
-            return result;
         }
+        return result;
     }
 
     constructor() {
