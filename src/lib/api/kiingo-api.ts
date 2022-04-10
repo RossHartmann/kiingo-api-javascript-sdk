@@ -1,3 +1,5 @@
+import { APIResponse } from "./responses/APIResponse";
+
 const API_ROOT = 'https://api.kiingo.com/v1';
 
 class CallOptions {
@@ -45,10 +47,18 @@ var call = function (method: HTTP_METHOD, path: string, params: any, options: Ca
 
     return promise
         .then((response) => {
-            if (response.data && response.data.NotAuthorized) {
-                throw new Error();
+            var data = response.data;
+            if (data) {
+                var parsed = new APIResponse(data);
+                if (parsed.BadRequest || parsed.Forbidden || parsed.NotAuthorized ||
+                    parsed.TooManyRequests || parsed.hasErrors()) {
+                    // Treat this as an exception
+                    throw new Error({ response: response });
+                }
+                
+                return parsed;
             }
-            return response.data;
+            return data;
         })
         .catch((ex) => {
             if (ex.isAxiosError && (!ex.response || !ex.response.data || !ex.response.data.Errors || ex.response.data.Errors.length <= 0)) {

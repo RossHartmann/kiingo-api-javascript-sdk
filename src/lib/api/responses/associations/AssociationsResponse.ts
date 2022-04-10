@@ -8,14 +8,14 @@ class AssociationsResponse extends APIResponse {
     partOfSpeechCategories: string[];
     items: AssociationsItem[];
 
-    constructor(data) {
+    constructor(data: any|undefined) {
         super(data);
 
         var defaultValues = {
         };
         utility.initializeObjFromData(this, defaultValues, data || {});
 
-        this.items = f.select(this.items || [], (item) => { return new AssociationsItem(item); });
+        this.items = utility.select(this.items || [], (item) => { return new AssociationsItem(item); });
     }
 
 

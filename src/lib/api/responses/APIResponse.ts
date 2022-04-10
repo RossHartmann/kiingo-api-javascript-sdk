@@ -5,8 +5,6 @@ class APIResponse {
     Errors: LogEvent[];
     HasError: boolean;
 
-    NoSessionFound: boolean;
-    InvalidSession: boolean;
     NotAuthorized: boolean;
     Forbidden: boolean;
 
@@ -20,7 +18,9 @@ class APIResponse {
         utility.initializeObjFromData(this, defaultValues, data || {});
     }
 
-
+    hasErrors(): boolean {
+        return this.Errors && this.Errors.length > 0;
+    }
 }
 
 

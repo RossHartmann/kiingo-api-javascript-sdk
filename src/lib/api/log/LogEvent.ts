@@ -2,7 +2,8 @@ import { utility } from '../../utilities/utilities';
 
 enum LogEventType {
     Error = 'Error',
-    Message = 'Message'
+    Message = 'Message',
+    Warning = 'Warning',
 };
 
 class LogEvent {
