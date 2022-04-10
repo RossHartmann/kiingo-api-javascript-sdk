@@ -1,4 +1,4 @@
 import "./index.css";
-import KiingoAPI from "./kiingo-api";
+import { KiingoAPI } from "../api/kiingo-api";
 
-export default KiingoAPI;
+export { KiingoAPI };

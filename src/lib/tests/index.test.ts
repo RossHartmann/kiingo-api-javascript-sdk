@@ -1,4 +1,4 @@
-import KiingoAPI from '../index';
+import { KiingoAPI } from '../index';
 
 it('Runs without crashing', () => {
     new KiingoAPI();
