@@ -4,13 +4,10 @@ import { APIRequest } from '../APIRequest';
 class AssociationsRequest extends APIRequest {
     text: string;
 
-    constructor(data: any|undefined) {
-        super(data);
+    constructor(text: string) {
+        super();
 
-        var defaultValues = {
-        };
-        utility.initializeObjFromData(this, defaultValues, data || {});
-
+        this.text = text;
     }
 }
 

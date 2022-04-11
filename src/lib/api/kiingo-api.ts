@@ -1,4 +1,7 @@
+import { utility } from "../utilities/utilities";
+import { AssociationsRequest } from "./requests/associations/AssociationsRequest";
 import { APIResponse } from "./responses/APIResponse";
+import { AssociationsResponse } from "./responses/associations/AssociationsResponse";
 
 const API_ROOT = 'https://api.kiingo.com/v1';
 
@@ -53,7 +56,7 @@ var call = function (method: HTTP_METHOD, path: string, params: any, options: Ca
                 if (parsed.BadRequest || parsed.Forbidden || parsed.NotAuthorized ||
                     parsed.TooManyRequests || parsed.hasErrors()) {
                     // Treat this as an exception
-                    throw new Error({ response: response });
+                    throw ({ response: response });
                 }
                 
                 return parsed;
@@ -62,33 +65,36 @@ var call = function (method: HTTP_METHOD, path: string, params: any, options: Ca
         })
         .catch((ex) => {
             if (ex.isAxiosError && (!ex.response || !ex.response.data || !ex.response.data.Errors || ex.response.data.Errors.length <= 0)) {
-                
-                console.log('Call to API failed.');
+                console.log('Network Error when calling Kiingo API.');
+                console.log(ex);
                 response = { hasError: true };
                 return response;
-                
             }
 
             var response = ex.response;
             if (!response) {
+                console.log('Network error when calling Kiingo API. No response received.');
+                console.log(ex);
                 response = { hasError: true };
-                comm.showError('Fatal Exception received.');
-                console.log(JSON.stringify(ex));
                 return response;
             }
 
-            if (response.data && response.data.NotAuthorized) {
-            }
-
-            response.data.hasError = true;
-
-            if (response.data && response.data.Errors) {
-            }
-
-            if (response.status === 401) {
-            }
-
+            return response;
         });
+};
+var getCallOptions = function (api: KiingoAPI): CallOptions {
+    if (!utility.hasValueAndLength(api.apiKey)) {
+        throw new Error('Kiingo API must first be initialized with a valid API key.');
+    }
+    if (!utility.hasValueAndLength(api.secretKey)) {
+        throw new Error('Kiingo API must first be initialized with a valid secret key.');
+    }
+    var options = new CallOptions();
+    options.headers = {
+        'x-api-key': api.apiKey,
+        'x-secret-key': api.secretKey,
+    };
+    return options;
 };
 
 class KiingoAPI {
@@ -103,6 +109,15 @@ class KiingoAPI {
         this.secretKey = secretKey;
         return true;
     };
+
+    async getAssociations(request: AssociationsRequest): Promise<AssociationsResponse> {
+        const route = '/associations';
+        var callOptions = getCallOptions(this);
+        return call(HTTP_METHOD.GET, route, request, callOptions)
+            .then((response: any) => {
+                return new AssociationsResponse(response);
+            });
+    }
 }
 
 export {

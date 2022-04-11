@@ -33,7 +33,7 @@ class AssociationsItem {
     partOfSpeechCategories: PartOfSpeechCategory[];
     relationshipTypes: WordRelationshipType[];
 
-    constructor(data) {
+    constructor(data: any|undefined) {
 
         var defaultValues = {
         };
