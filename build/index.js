@@ -1,6 +1,6 @@
 /*!
  * 
- *   kiingo-api-javascript-sdk v1.0.0
+ *   kiingo-api v1.0.0
  *   https://github.com/rosshartmann/kiingo-api-javascript-sdk
  *
  *   Copyright (c) Ross Hartmann and project contributors.
