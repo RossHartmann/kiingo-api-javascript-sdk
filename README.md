@@ -1,5 +1,5 @@
 
-[![npm version](https://img.shields.io/npm/v/axios.svg?style=flat-square)](https://www.npmjs.org/package/kiingo-api)
+[![npm version](https://img.shields.io/npm/v/kiingo-api.svg?style=flat-square)](https://www.npmjs.org/package/kiingo-api)
 
 
 ## Installing
@@ -7,19 +7,19 @@
 Using npm:
 
 ```bash
-$ npm install axios
+$ npm install kiingo-api
 ```
 
 Using bower:
 
 ```bash
-$ bower install axios
+$ bower install kiingo-api
 ```
 
 Using yarn:
 
 ```bash
-$ yarn add axios
+$ yarn add kiingo-api
 ```
 
 ## Examples
