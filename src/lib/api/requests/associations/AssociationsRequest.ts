@@ -1,17 +1,14 @@
-import { utility } from '../../../utilities/utilities';
-import { APIRequest } from '../APIRequest';
+import { utility } from "../../../utilities/utilities";
+import { APIRequest } from "../APIRequest";
 
 class AssociationsRequest extends APIRequest {
-    text: string;
+  text: string;
 
-    constructor(text: string) {
-        super();
+  constructor(text: string) {
+    super(null);
 
-        this.text = text;
-    }
+    this.text = text;
+  }
 }
 
-
-export {
-    AssociationsRequest
-}
+export { AssociationsRequest };
