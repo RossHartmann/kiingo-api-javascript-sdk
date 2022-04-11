@@ -1,6 +1,6 @@
 {
   "name": "kiingo-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Javascript SDK for the Kiingo NLP API",
   "main": "build/index.js",
   "types": "build/types/index.d.ts",
