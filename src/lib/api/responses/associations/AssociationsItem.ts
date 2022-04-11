@@ -5,7 +5,6 @@ enum WordRelationshipType {
     Synonym = 'Synonym',
     Antonym = 'Antonym',
     Context = 'Context',
-    NearAntonym = 'NearAntonym',
     Hypernym = 'Hypernym',
     Hyponym = 'Hyponym',
     Holonym = 'Holonym',
