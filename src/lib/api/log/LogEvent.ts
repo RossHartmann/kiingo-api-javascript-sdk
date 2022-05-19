@@ -1,14 +1,14 @@
 import { utility } from '../../utilities/utilities';
 
 enum LogEventType {
-    Error = 'Error',
-    Message = 'Message',
-    Warning = 'Warning',
+    error = 'error',
+    message = 'message',
+    warning = 'warning',
 };
 
 class LogEvent {
-    Type: LogEventType;
-    Message: string;
+    type: LogEventType;
+    message: string;
 
     constructor(data: {}|undefined) {
 

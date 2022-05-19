@@ -58,10 +58,10 @@ var call = function (
       if (data) {
         var parsed = new APIResponse(data);
         if (
-          parsed.BadRequest ||
-          parsed.Forbidden ||
-          parsed.NotAuthorized ||
-          parsed.TooManyRequests ||
+          parsed.badRequest ||
+          parsed.forbidden ||
+          parsed.notAuthorized ||
+          parsed.tooManyRequests ||
           parsed.hasErrors()
         ) {
           // Treat this as an exception
@@ -77,8 +77,8 @@ var call = function (
         ex.isAxiosError &&
         (!ex.response ||
           !ex.response.data ||
-          !ex.response.data.Errors ||
-          ex.response.data.Errors.length <= 0)
+          !ex.response.data.errors ||
+          ex.response.data.errors.length <= 0)
       ) {
         console.log("Network Error when calling Kiingo API.");
         console.log(ex);

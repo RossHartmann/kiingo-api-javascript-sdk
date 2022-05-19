@@ -2,14 +2,15 @@ import { LogEvent } from "../log/LogEvent";
 import { utility } from "../../utilities/utilities";
 
 class APIResponse {
-  Errors: LogEvent[];
-  HasError: boolean;
+  errors: LogEvent[];
 
-  NotAuthorized: boolean;
-  Forbidden: boolean;
+  notAuthorized: boolean;
+  forbidden: boolean;
 
-  BadRequest: boolean;
-  TooManyRequests: boolean;
+  badRequest: boolean;
+  tooManyRequests: boolean;
+
+  creditsUsed: number;
 
   constructor(data: {} | undefined) {
     var defaultValues = {};
@@ -17,7 +18,7 @@ class APIResponse {
   }
 
   hasErrors(): boolean {
-    return this.Errors && this.Errors.length > 0;
+    return this.errors && this.errors.length > 0;
   }
 }
 
