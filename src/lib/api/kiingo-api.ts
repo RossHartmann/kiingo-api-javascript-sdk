@@ -3,6 +3,8 @@ import { AssociationsRequest } from "./requests/associations/AssociationsRequest
 import { APIResponse } from "./responses/APIResponse";
 import { AssociationsResponse } from "./responses/associations/AssociationsResponse";
 import axios from "axios";
+import { PartOfSpeechTaggerRequest } from "./requests/pos-tagger/PartOfSpeechTaggerRequest";
+import { PartOfSpeechTaggerResponse } from "./responses/pos-tagger/PartOfSpeechTaggerResponse";
 
 const API_ROOT = "https://api.kiingo.com/v1";
 
@@ -80,7 +82,7 @@ var call = function (
           !ex.response.data.errors ||
           ex.response.data.errors.length <= 0)
       ) {
-        console.log("Network Error when calling Kiingo API.");
+        console.log("Network Error when calling the Kiingo API.");
         console.log(ex);
         throw ex;
       }
@@ -88,7 +90,7 @@ var call = function (
       var response = ex.response;
       if (!response) {
         console.log(
-          "Network error when calling Kiingo API. No response received."
+          "Network error when calling the Kiingo API. No response received."
         );
         console.log(ex);
         throw ex;
@@ -135,6 +137,18 @@ class KiingoAPI {
     return call(HTTP_METHOD.GET, route, request, callOptions).then(
       (response: any) => {
         return new AssociationsResponse(response);
+      }
+    );
+  }
+
+  tagPartsOfSpeech(
+    request: PartOfSpeechTaggerRequest
+  ): Promise<PartOfSpeechTaggerResponse> {
+    const route = "/pos-tagger";
+    var callOptions = getCallOptions(this);
+    return call(HTTP_METHOD.POST, route, request, callOptions).then(
+      (response: any) => {
+        return new PartOfSpeechTaggerResponse(response);
       }
     );
   }

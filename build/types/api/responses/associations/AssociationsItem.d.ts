@@ -8,7 +8,7 @@ declare enum WordRelationshipType {
     Holonym = "Holonym",
     Meronym = "Meronym"
 }
-declare enum PartOfSpeechCategory {
+declare enum AssociationsPartOfSpeechCategory {
     Noun = "Noun",
     Verb = "Verb",
     Adjective = "Adjective",
@@ -25,8 +25,8 @@ declare enum PartOfSpeechCategory {
 declare class AssociationsItem {
     text: string;
     cosineSimilarity: number;
-    partOfSpeechCategories: PartOfSpeechCategory[];
+    partOfSpeechCategories: AssociationsPartOfSpeechCategory[];
     relationshipTypes: WordRelationshipType[];
     constructor(data: any | undefined);
 }
-export { WordRelationshipType, PartOfSpeechCategory, AssociationsItem };
+export { WordRelationshipType, AssociationsPartOfSpeechCategory, AssociationsItem, };

@@ -11,7 +11,7 @@ enum WordRelationshipType {
   Meronym = "Meronym",
 }
 
-enum PartOfSpeechCategory {
+enum AssociationsPartOfSpeechCategory {
   Noun = "Noun",
   Verb = "Verb",
   Adjective = "Adjective",
@@ -29,7 +29,7 @@ enum PartOfSpeechCategory {
 class AssociationsItem {
   text: string;
   cosineSimilarity: number;
-  partOfSpeechCategories: PartOfSpeechCategory[];
+  partOfSpeechCategories: AssociationsPartOfSpeechCategory[];
   relationshipTypes: WordRelationshipType[];
 
   constructor(data: any | undefined) {
@@ -38,4 +38,8 @@ class AssociationsItem {
   }
 }
 
-export { WordRelationshipType, PartOfSpeechCategory, AssociationsItem };
+export {
+  WordRelationshipType,
+  AssociationsPartOfSpeechCategory,
+  AssociationsItem,
+};

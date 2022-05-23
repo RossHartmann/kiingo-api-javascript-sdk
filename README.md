@@ -45,3 +45,27 @@ api.getAssociations(request)
         // TODO: Handle Exception
     });
 ```
+
+
+### Tag Parts-of-Speech
+```js
+const { KiingoAPI, PartOfSpeechTaggerRequest, PartOfSpeechModel, PartOfSpeechTaggerResponse } = require('kiingo-api');
+
+const api = new KiingoAPI();
+
+const apiKey = 'MY-API-KEY';
+const secretKey = 'MY-SECRET-KEY';
+api.initialize(apiKey, secretKey);
+
+const queryText = 'The quick brown fox jumps over the lazy dog.';
+const model = PartOfSpeechModel.standard;
+var request = new PartOfSpeechTaggerRequest(queryText, model);
+
+api.tagPartsOfSpeech(request)
+    .then((response) => {
+        // TODO: Process results
+    })
+    .catch((ex) => {
+        // TODO: Handle Exception
+    });
+```

@@ -1,11 +1,11 @@
 declare enum LogEventType {
-    Error = "Error",
-    Message = "Message",
-    Warning = "Warning"
+    error = "error",
+    message = "message",
+    warning = "warning"
 }
 declare class LogEvent {
-    Type: LogEventType;
-    Message: string;
+    type: LogEventType;
+    message: string;
     constructor(data: {} | undefined);
 }
 export { LogEvent };
